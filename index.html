@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Color Dice</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="game">
+        <header class="topbar">
+            <div class="brand">COLOR DICE</div>
+            <nav class="account-nav">
+                <button id="loginButton" class="nav-button">LOG IN</button>
+                <button id="signupButton" class="nav-button signup">SIGN UP</button>
+            </nav>
+        </header>
+
+        <h1>COLOR DICE</h1>
+        <p class="subtitle">Choose your colors and roll the dice!</p>
+
+        <section class="settings">
+            <label>
+                FIRST COLOR
+                <select id="colorOne"></select>
+            </label>
+            <label>
+                SECOND COLOR
+                <select id="colorTwo"></select>
+            </label>
+            <label>
+                NUMBER OF DICE
+                <select id="diceCount">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3" selected>3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </label>
+        </section>
+
+        <section class="dice-area" id="diceArea" aria-live="polite"></section>
+
+        <div class="result" id="result">Ready to roll?</div>
+        <div class="match-count" id="matchCount">Matches: 0 / 3</div>
+
+        <button class="roll-button" id="rollButton">ROLL</button>
+    </main>
+    <script src="js/app.js"></script>
+</body>
+</html>
