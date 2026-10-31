@@ -1,3 +1,4 @@
+
 const colors = [
     { name: "Red", value: "#ef4444" },
     { name: "Orange", value: "#f97316" },
@@ -14,8 +15,6 @@ const diceArea = document.getElementById("diceArea");
 const rollButton = document.getElementById("rollButton");
 const loginButton = document.getElementById("loginButton");
 const signupButton = document.getElementById("signupButton");
-const result = document.getElementById("result");
-const matchCount = document.getElementById("matchCount");
 
 let rolling = false;
 let forceCurrentRoll = false;
@@ -62,9 +61,6 @@ function createDice() {
         die.textContent = "?";
         diceArea.appendChild(die);
     }
-
-    result.textContent = "";
-    matchCount.textContent = "";
 }
 
 diceCount.addEventListener("change", createDice);
@@ -92,9 +88,6 @@ async function rollDice() {
     rollButton.disabled = true;
 
     const dice = [...diceArea.querySelectorAll(".die")];
-
-    result.textContent = "";
-    matchCount.textContent = "";
 
     dice.forEach(die => die.classList.add("rolling"));
 
