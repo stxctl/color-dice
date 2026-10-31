@@ -1,3 +1,4 @@
+
 const colors = [
     { name: "Red", value: "#ef4444" },
     { name: "Orange", value: "#f97316" },
@@ -60,8 +61,8 @@ function createDice() {
         diceArea.appendChild(die);
     }
 
-    result.textContent = "Ready to roll?";
-    matchCount.textContent = `Matches: 0 / ${count}`;
+    result.textContent = "";
+    matchCount.textContent = "";
 }
 
 diceCount.addEventListener("change", createDice);
@@ -89,7 +90,8 @@ async function rollDice() {
     rollButton.disabled = true;
 
     const dice = [...diceArea.querySelectorAll(".die")];
-    result.textContent = "Rolling...";
+
+    result.textContent = "";
     dice.forEach(die => die.classList.add("rolling"));
 
     try {
@@ -131,20 +133,9 @@ async function rollDice() {
             dice[index].textContent = color.name;
         });
 
-        const selected = [colorOne.value, colorTwo.value];
-        const matches = finalResults.filter(color =>
-            selected.includes(color.name)
-        ).length;
+        result.textContent = "";
+        matchCount.textContent = "";
 
-        matchCount.textContent = `Matches: ${matches} / ${dice.length}`;
-
-        if (matches === dice.length) {
-            result.textContent = "All dice match!";
-        } else if (matches > 0) {
-            result.textContent = "Nice! You got a match!";
-        } else {
-            result.textContent = "No matches. Try again!";
-        }
     } finally {
         dice.forEach(die => die.classList.remove("rolling"));
         rollButton.disabled = false;
