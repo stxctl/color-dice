@@ -1,4 +1,3 @@
-
 const colors = [
     { name: "Red", value: "#ef4444" },
     { name: "Orange", value: "#f97316" },
@@ -44,14 +43,17 @@ function randomColor() {
 
 function selectedColor() {
     const selected = [colorOne.value, colorTwo.value];
+
     const available = colors.filter(color =>
         selected.includes(color.name)
     );
+
     return available[Math.floor(Math.random() * available.length)];
 }
 
 function createDice() {
     diceArea.innerHTML = "";
+
     const count = Number(diceCount.value);
 
     for (let i = 0; i < count; i++) {
@@ -92,6 +94,8 @@ async function rollDice() {
     const dice = [...diceArea.querySelectorAll(".die")];
 
     result.textContent = "";
+    matchCount.textContent = "";
+
     dice.forEach(die => die.classList.add("rolling"));
 
     try {
@@ -101,6 +105,7 @@ async function rollDice() {
                 die.style.backgroundColor = color.value;
                 die.textContent = color.name;
             });
+
             await sleep(65);
         }
 
@@ -111,6 +116,7 @@ async function rollDice() {
             forceCurrentRoll = false;
         } else if (forceFollowingRollToMiss && !skipBeforeMiss) {
             const excluded = [colorOne.value, colorTwo.value];
+
             const available = colors.filter(color =>
                 !excluded.includes(color.name)
             );
@@ -133,11 +139,9 @@ async function rollDice() {
             dice[index].textContent = color.name;
         });
 
-        result.textContent = "";
-        matchCount.textContent = "";
-
     } finally {
         dice.forEach(die => die.classList.remove("rolling"));
+
         rollButton.disabled = false;
         rolling = false;
     }
